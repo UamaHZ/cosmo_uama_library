@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cosmo_uama_library.iml" filepath="$PROJECT_DIR$/cosmo_uama_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/image-compress-1.0/image-compress-1.0.iml" filepath="$PROJECT_DIR$/image-compress-1.0/image-compress-1.0.iml" />
+    </modules>
+  </component>
+</project>

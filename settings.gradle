@@ -1,0 +1,1 @@
+include ':app', ':image-compress-1.0'
