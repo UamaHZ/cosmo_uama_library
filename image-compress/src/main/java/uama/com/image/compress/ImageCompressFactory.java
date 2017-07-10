@@ -17,12 +17,20 @@ import id.zelory.compressor.Compressor;
 public class ImageCompressFactory {
     /**
      *
-     * 获取
+     * 获取缓存路径
      * @param context
      * @return
      */
     public static String getCompressCacheDir(Context context){
         return context.getCacheDir().getPath()+File.separator+"compress_cache";
+    }
+
+    /**
+     * 删除压缩图片
+     * @param context
+     */
+    public static void clearCacheFiles(Context context){
+        ImageCompressUtils.cleanCustomCache(getCompressCacheDir(context));
     }
 
     /**
@@ -56,6 +64,7 @@ public class ImageCompressFactory {
                     .setMaxHeight(720)
                     .setQuality(80)
                     .setCompressFormat(Bitmap.CompressFormat.JPEG)
+                    .setDestinationDirectoryPath(dir)
                     .compressToFile(new File(newPath));
 
         }catch (Exception e){

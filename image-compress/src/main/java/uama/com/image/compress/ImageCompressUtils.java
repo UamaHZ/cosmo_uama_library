@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -91,6 +92,29 @@ public class ImageCompressUtils {
             error.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * * 清除自定义路径下的文件，使用需小心，请不要误删。而且只支持目录下的文件删除 * *
+     *
+     * @param filePath
+     * */
+    public static void cleanCustomCache(String filePath) {
+        deleteFilesByDirectory(new File(filePath));
+    }
+
+
+    /**
+     * * 删除方法 这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理 * *
+     *
+     * @param directory
+     */
+    private static void deleteFilesByDirectory(File directory) {
+        if (directory != null && directory.exists() && directory.isDirectory()) {
+            for (File item : directory.listFiles()) {
+                item.delete();
+            }
+        }
     }
 
 }
