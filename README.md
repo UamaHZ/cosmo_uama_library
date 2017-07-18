@@ -11,7 +11,8 @@
 ```
 ##### 其次在需要引用该的 module 的 build.gradle 中添加依赖：
 ```
-compile 'com.uama.utils:image-compress:1.0.2'
+compile 'com.uama.utils:image-compress:1.0.3'
+
 ```
 ### 2.用法：
   1.图片压缩  
