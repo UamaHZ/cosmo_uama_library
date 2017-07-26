@@ -40,54 +40,30 @@ public class ImageCompressFactory {
      * @return
      */
     public static File getNewFile(Context context, String filePath){
-        FileOutputStream fos = null;
-        Bitmap save = null;
-        String newPath = "";
-        File  imgFile = null;
-
+        File imgFile = null;
         try{
-            // 得到图片的旋转角度
-            int degree = ImageCompressUtils.readPictureDegree(filePath);
-            // 得到旋转后的新图片
-            save = ImageCompressUtils.rotaingImageView(degree,ImageCompressUtils.getBitmap(filePath));
+            //  imgFile = FileUtil.getNewFile(context,paths.get(i));
+            // imgFile = ImageCompressFactory.getNewFile(context,paths.get(i));
+//                           ImageCompressFactory.getCompressCacheDir(context);
+//                           ImageCompressFactory.clearCacheFiles(context);
+
             String dir = context.getCacheDir().getPath()+File.separator+"compress_cache";
             File tmpFile =  new File(dir);
             if (!tmpFile.exists()) {
                 tmpFile.mkdirs();
             }
-            newPath = dir + File.separator + System.currentTimeMillis()+".jpg";
-            fos = new FileOutputStream(newPath);
-            save.compress(Bitmap.CompressFormat.JPEG, 100, fos);// 把数据写入文件
-
             imgFile = new Compressor(context)
-                    .setMaxWidth(540)
-                    .setMaxHeight(720)
+                    .setMaxWidth(640)
+                    .setMaxHeight(480)
                     .setQuality(80)
                     .setCompressFormat(Bitmap.CompressFormat.JPEG)
                     .setDestinationDirectoryPath(dir)
-                    .compressToFile(new File(newPath));
-
+                    .compressToFile(new File(filePath));
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            // 关闭流 并且回收图片
-            try {
-                if (fos != null) {
-                    fos.flush();
-                    fos.close();
-                }
-
-                if (!save.isRecycled()){
-                    save.recycle();
-                }
-                System.gc();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return imgFile;
         }
 
+        return imgFile;
     }
 
 
