@@ -1,1 +1,1 @@
-include ':app',':image-compress'
+include ':image-compress'
